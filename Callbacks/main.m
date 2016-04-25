@@ -7,9 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Logger.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        Logger *logger = [[Logger alloc] init];
+        __unused NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2.0
+                                                          target:logger
+                                                        selector:@selector(sayOush:)
+                                                        userInfo:nil
+                                                         repeats:YES];
         [[NSRunLoop currentRunLoop] run];
     }
     return 0;
