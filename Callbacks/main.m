@@ -12,6 +12,12 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         Logger *logger = [[Logger alloc] init];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:logger
+                                                 selector:@selector(zoneChange:)
+                                                     name:NSSystemTimeZoneDidChangeNotification
+                                                   object:nil];
+        
         NSURL *url = [NSURL URLWithString:@"http://gutenberg.org/cache/epub/205/pg205.txt"];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
